@@ -12,7 +12,6 @@ namespace NekogiriMod
     {
         private void Awake()
         {
-            // Set up plugin logging
             Logger.LogInfo(@"
  ██ ▄█▀ ██▓ ██▀███   ██▓  ▄████  ██▓ ██▀███   ██▓
  ██▄█▒ ▓██▒▓██ ▒ ██▒▓██▒ ██▒ ▀█▒▓██▒▓██ ▒ ██▒▓██▒
@@ -27,11 +26,8 @@ namespace NekogiriMod
 ");
             Logger.LogInfo("NekogiriPeak has loaded!");
 
-            // Create a Harmony instance and apply the patch
             var harmony = new Harmony("kirigiri.peak.nekogiri");
-            harmony.PatchAll();  // Automatically patch all methods that have the PatchAttribute
-
-            // Optionally log that the patch has been applied
+            harmony.PatchAll();
             Logger.LogInfo("Made with <3 By Kirigiri \nhttps://discord.gg/TBs8Te5nwn");
         }
         [HarmonyPatch(typeof(CloudAPI), nameof(CloudAPI.CheckVersion))]
